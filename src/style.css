@@ -71,6 +71,19 @@ body {
 /* header finished*/
 
 /* footer components*/
+.w3-content {
+  margin: auto;
+  width: 90%;
+  text-align: center;
+  padding-top: 100px;
+  box-sizing: border-box;
+}
+.w3-content img {
+  width: 100%;
+  height: 140%;
+  text-align: center;
+  align-content: center;
+}
 .containerHeader {
   width: 1000px;
   margin: auto;
