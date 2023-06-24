@@ -2,7 +2,75 @@ body {
   background-color: #d2d5d6;
   font-family: system-ui;
 }
-/* header components */
+#container-header {
+  background-color: white;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1.5fr 1.5fr 5fr 1fr;
+  font-family: "Lato", sans-serif;
+  z-index: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  box-sizing: border-box;
+  position: fixed;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
+    0 2px 6px 2px rgba(60, 64, 67, 0.149);
+}
+#shopName {
+  font-size: 40px;
+  font-family: "Lato", sans-serif;
+}
+#shopName a {
+  text-decoration: none;
+  color: rgb(29, 29, 29);
+}
+#shopName > b {
+  font-weight: 900;
+  font: black;
+}
+
+#collection {
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#collection a {
+  text-decoration: none;
+  color: rgb(29, 29, 29);
+}
+
+.search {
+  padding: 14px;
+  color: rgb(29, 29, 29);
+  min-width: 25px;
+  text-align: center;
+  position: absolute;
+}
+#input {
+  width: 35em;
+  height: 3em;
+  padding: 2px 50px;
+  background-color: rgb(241, 241, 241);
+  border: none;
+  border-radius: 5px;
+}
+#user {
+  display: flex;
+  /* float: right; */
+  align-items: center;
+}
+
+.userIcon {
+  font-size: 45px;
+}
+
+/* header finished*/
+
+/* footer components*/
 .containerHeader {
   width: 1000px;
   margin: auto;
@@ -48,6 +116,10 @@ header .shopping span {
   background-color: #453e3b;
   height: 100vh;
   transition: 0.5s;
+  overflow: auto;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card h1 {
@@ -86,3 +158,82 @@ header .shopping span {
 .active .containerHeader {
   transform: translateX(-15%);
 }
+.list .item {
+  height: 450px;
+
+  width: 100%;
+  background-color: white;
+  align-content: center;
+  border-radius: 10px;
+  box-shadow: 1px 2px 6px 2px rgb(219, 219, 219);
+}
+#box:hover {
+  box-shadow: 1px 6px 3px 0 rgb(185, 185, 185);
+}
+.list .item img {
+  width: 90%;
+  height: 300px;
+}
+.list .item .title {
+  font-weight: 600;
+  height: 40px;
+  padding-right: 18px;
+}
+.list .item .price {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  gap: 60%;
+}
+.list .item button {
+  background-color: #1c1f25;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  margin-top: 6%;
+}
+.listCard li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.listcard li div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.listCard li img {
+  width: 90%;
+}
+.listCard button {
+  width: auto;
+  background-color: #fff5;
+  border: none;
+}
+.listCard .count {
+  margin: 0 10px;
+}
+
+/* #containerSlider {
+  margin: auto;
+  width: 90%;
+  text-align: center;
+  padding-top: 100px;
+  box-sizing: border-box;
+}
+#containerSlider img {
+  width: 100%;
+  height: 140%;
+  text-align: center;
+  align-content: center;
+}
+@media (max-width: 732px) {
+  #containerSlider img {
+    height: 12em;
+  }
+}
+@media (max-width: 500px) {
+  #containerSlider img {
+    height: 10em;
+  }
+} */
