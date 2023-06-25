@@ -2,6 +2,10 @@ body {
   background-color: #d2d5d6;
   font-family: system-ui;
 }
+:root {
+  --first-color: hsl(31, 100%, 70%);
+  --border-color: hsl(0, 0%, 94%);
+}
 #container-header {
   background-color: white;
   margin: auto;
@@ -176,11 +180,19 @@ header .shopping span {
 .list .item {
   height: 450px;
   width: 100%;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.66);
   align-content: center;
   border-radius: 50px;
-  box-shadow: 2px 2px 20px 1px rgb(123, 123, 123);
+  box-shadow: 1px 8px 32px hsla(0, 0%, 10%, 0.1);
   margin-top: 20px;
+  position: relative;
+  padding: 1.25rem 0;
+  border: 1px solid var(--border-color);
+  text-align: center;
+  transition: 0.3s;
+}
+.list .item:hover {
+  box-shadow: 1px 1px 13px 1px rgb(74, 74, 74);
 }
 
 .list .item img {
@@ -218,14 +230,13 @@ header .shopping span {
 .list .item .rating .star {
   font-size: 22px;
   margin-left: 3px;
-  color: #fcca00;
+  color: var(--first-color);
   margin-top: 10px;
 }
 
 .list .item button {
   background-color: #1c1f25;
   color: #fff;
-  margin-top: 3%;
   padding: 10px;
   width: 100%;
 }
@@ -258,19 +269,41 @@ header .shopping span {
   background-color: #bdbdff;
   color: rgb(54, 0, 249);
   width: 54%;
+  font-weight: 600;
   font-size: 18px;
-  text-decoration: none;
   border: 2px solid #1414ff;
   padding: 14px;
   text-transform: uppercase;
-  overflow: hidden;
   transition: 1s all ease;
   border-radius: 17px;
+  margin-top: 3%;
 }
 
 .showMore:hover {
   background-color: #1414ff;
   color: #fff;
+}
+/* end of the page */
+#containerFooter {
+  width: 100%;
+  background-color: rgb(29, 29, 29);
+  color: white;
+  letter-spacing: 1px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 15px 300px;
+  box-sizing: border-box;
+}
+#containerFooter h3:hover,
+#containerFooter p:hover {
+  color: lightslategray;
+  cursor: pointer;
+}
+#webFooter {
+  padding-top: 30px;
+  font-size: 12px;
 }
 
 /* #containerSlider {
