@@ -5,10 +5,8 @@ const listCard = document.querySelector(".listCard");
 const body = document.querySelector("body");
 const total = document.querySelector(".total");
 const quantity = document.querySelector(".quantity");
-const showMore = document.querySelector(".showMore");
 
 var myIndex = 0;
-
 carousel();
 
 function carousel() {
@@ -37,11 +35,9 @@ const Loading = (state) => {
   if (state == true) {
     const loader = document.getElementById("loader");
     loader.classList.remove("d-none");
-    showMore.style.display = "none"; // Hide the "View More Product" button
   } else {
     const loader = document.getElementById("loader");
     loader.classList.add("d-none"); // Hide the loader
-    showMore.style.display = "block"; // Show the "View More Product" button
   }
   console.log(state);
 };
@@ -61,9 +57,10 @@ let totalPrice = 0;
 let count = 0;
 
 export const createProducts = (products) => {
-  products.slice(0, 9).forEach((product, key) => {
+  products.forEach((product, key) => {
     const productEl = document.createElement("div");
     productEl.classList.add("product");
+
     function initApp() {
       let newDiv = document.createElement("div");
       newDiv.classList.add("item");
@@ -81,7 +78,6 @@ export const createProducts = (products) => {
       `;
       list.appendChild(newDiv);
       Loading(false);
-
       const addToCardBtn = newDiv.querySelector(".addToCardBtn");
       addToCardBtn.addEventListener("click", () => {
         addToCard(key);
