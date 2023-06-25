@@ -5,7 +5,6 @@ const listCard = document.querySelector(".listCard");
 const body = document.querySelector("body");
 const total = document.querySelector(".total");
 const quantity = document.querySelector(".quantity");
-const main = document.querySelector(".main");
 
 var myIndex = 0;
 carousel();
@@ -46,7 +45,7 @@ let totalPrice = 0;
 let count = 0;
 
 export const createProducts = (products) => {
-  products.forEach((product, key) => {
+  products.slice(0, 9).forEach((product, key) => {
     const productEl = document.createElement("div");
     productEl.classList.add("product");
 
@@ -58,7 +57,9 @@ export const createProducts = (products) => {
         <div class="title">${product.title}</div>
         <div class="price">
            <span class="price-value">${product.price.toLocaleString()}$</span>
-           <span class="rating">${product.rating?.rate}/5★</span>
+           <span class="rating"><span class="rate">${
+             product.rating?.rate
+           }/5</span><span class="star">★</span></span>
         </div>
 
         <button class="addToCardBtn">Add to Card</button>
