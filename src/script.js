@@ -37,11 +37,11 @@ const Loading = (state) => {
   if (state == true) {
     const loader = document.getElementById("loader");
     loader.classList.remove("d-none");
-    showMore.style.display = "none"; // Hide the "View More Product" button
+    showMore.style.display = "none";
   } else {
     const loader = document.getElementById("loader");
-    loader.classList.add("d-none"); // Hide the loader
-    showMore.style.display = "block"; // Show the "View More Product" button
+    loader.classList.add("d-none");
+    showMore.style.display = "block";
   }
   console.log(state);
 };
@@ -50,8 +50,8 @@ const API_URL = "https://fakestoreapi.com/products";
 
 export const getData = async () => {
   Loading(true);
-  const res = await fetch(API_URL);
-  const data = await res.json();
+  const response = await fetch(API_URL);
+  const data = await response.json();
   console.log(data);
   createProducts(data);
 };
@@ -62,8 +62,6 @@ let count = 0;
 
 export const createProducts = (products) => {
   products.slice(0, 9).forEach((product, key) => {
-    const productEl = document.createElement("div");
-    productEl.classList.add("product");
     function initApp() {
       let newDiv = document.createElement("div");
       newDiv.classList.add("item");
@@ -111,7 +109,7 @@ function reloadCard() {
   count = 0;
   for (const key in listCards) {
     const product = listCards[key];
-    totalPrice += product.price;
+    totalPrice += product.price * product.quantity;
     count += product.quantity;
 
     if (product != null) {
@@ -133,7 +131,7 @@ function reloadCard() {
       listCard.appendChild(newDiv);
     }
   }
-  total.innerText = totalPrice.toLocaleString();
+  total.innerText = totalPrice.toLocaleString() + "$";
   quantity.innerText = count;
   saveDataToLocalStorage();
 }
@@ -153,8 +151,11 @@ window.changeQuantity = function (key, newQuantity) {
   if (newQuantity <= 0) {
     delete listCards[key];
   } else {
-    listCards[key].quantity = newQuantity;
-    listCards[key].price = newQuantity * listCards[key].price;
+    const product = listCards[key];
+    product.quantity = newQuantity;
+
+    const priceDifference = (newQuantity - product.quantity) * product.price;
+    product.price += priceDifference;
   }
 
   reloadCard();

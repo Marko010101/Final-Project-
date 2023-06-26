@@ -62,9 +62,6 @@ export const createProducts = (products) => {
   );
 
   filteredProducts.forEach((product, key) => {
-    const productEl = document.createElement("div");
-    productEl.classList.add("product");
-
     function initApp() {
       let newDiv = document.createElement("div");
       newDiv.classList.add("item");
@@ -104,14 +101,13 @@ export const createProducts = (products) => {
   loadDataFromLocalStorage();
   reloadCard();
 };
-
 function reloadCard() {
   listCard.innerHTML = "";
   totalPrice = 0;
   count = 0;
   for (const key in listCards) {
     const product = listCards[key];
-    totalPrice += product.price;
+    totalPrice += product.price * product.quantity;
     count += product.quantity;
 
     if (product != null) {
@@ -133,7 +129,7 @@ function reloadCard() {
       listCard.appendChild(newDiv);
     }
   }
-  total.innerText = totalPrice.toLocaleString();
+  total.innerText = totalPrice.toLocaleString() + "$";
   quantity.innerText = count;
   saveDataToLocalStorage();
 }
@@ -153,8 +149,11 @@ window.changeQuantity = function (key, newQuantity) {
   if (newQuantity <= 0) {
     delete listCards[key];
   } else {
-    listCards[key].quantity = newQuantity;
-    listCards[key].price = newQuantity * listCards[key].price;
+    const product = listCards[key];
+    product.quantity = newQuantity;
+
+    const priceDifference = (newQuantity - product.quantity) * product.price;
+    product.price += priceDifference;
   }
 
   reloadCard();
