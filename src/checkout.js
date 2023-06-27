@@ -17,7 +17,7 @@ function createListCard() {
     if (product != null) {
       let newDiv = document.createElement("div");
       newDiv.innerHTML = `
-        <div class="card_img"><img src="${product.image}" /></div>
+        <div class="product_img"><img src="${product.image}" /></div>
         <div class="text-white p-2">${product.title}</div>
         <div class="text-white">${product.price.toLocaleString()}$</div>
         <div class="text-white">${product.quantity}</div>

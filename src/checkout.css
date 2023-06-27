@@ -99,6 +99,10 @@ input {
 }
 
 /* listCard */
+.product_img {
+  width: 60px;
+  height: 60px;
+}
 .listCard {
   height: 307px;
   overflow: auto;
@@ -112,6 +116,8 @@ input {
 }
 .listCard .prod_img {
   font-size: 0;
+  width: 60px;
+  height: 60px;
 }
 .listCard .prod_info {
   padding: 0 8px;
