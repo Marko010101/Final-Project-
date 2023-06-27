@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="src/checkout.css" />
+    <title>Document</title>
+  </head>
+  <body class="payment-body">
+    <div id="container-header">
+      <!-- SHOP NAME -->
+      <div id="shopName">
+        <a href="index.html"> <b>STYLE</b><b class="MAVEN">MAVEN</b></a>
+      </div>
+      <div id="collection">
+        <div><a href="clothing.html"> CLOTHING </a></div>
+        <div>
+          <a href="accessories.html"> ACCESSORIES </a>
+        </div>
+      </div>
+      <div id="search">
+        <i class="fas fa-search search"></i>
+        <input
+          type="text"
+          id="input"
+          name="searchBox"
+          placeholder="Search for Clothing and Accessories"
+        />
+      </div>
+      <div id="user">
+        <a href="#"> <i class="fas fa-user-circle userIcon"></i> </a>
+      </div>
+    </div>
+
+    <div class="container-checkout">
+      <div class="box order_box">
+        <div class="head">Order Details</div>
+        <div class="listCard"></div>
+        <div class="foot">
+          <dl class="total_price">
+            <dt>Total</dt>
+            <div class="total">0$</div>
+          </dl>
+        </div>
+      </div>
+      <div class="box payment_box">
+        <div class="head">Payment Information</div>
+        <div class="body-payment">
+          <div>
+            <div class="card_img">
+              <i class="fab fa-cc-visa"></i>
+              <div class="card_info">
+                <dl class="number">
+                  <dt>card number</dt>
+                  <dd>
+                    <ul>
+                      <li>****</li>
+                      <li>****</li>
+                      <li>****</li>
+                      <li>****</li>
+                    </ul>
+                  </dd>
+                </dl>
+                <dl class="expiration">
+                  <dt>expiration</dt>
+                  <dd>** / ****</dd>
+                </dl>
+                <dl class="cvc">
+                  <dt>cvc</dt>
+                  <dd>***</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="card_form">
+              <div>
+                <ul>
+                  <li class="number">
+                    <input type="text" placeholder="1234 5678 1234 5678" />
+                  </li>
+                  <li class="expiration">
+                    <input type="text" placeholder="MM/YYYY" />
+                  </li>
+                  <li class="cvc"><input type="text" placeholder="123" /></li>
+                </ul>
+              </div>
+              <div class="footer">
+                <ul class="bar_tool">
+                  <li><span class="ui_btn b_lg b_primary">Checkout</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="foot"></div>
+      </div>
+    </div>
+    <script src="src/checkout.js" type="module"></script>
+  </body>
+</html>

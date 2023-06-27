@@ -156,17 +156,37 @@ header .shopping span {
   display: flex;
   flex-direction: column;
 }
-
-.card h1 {
-  color: #e8bc0e;
-  font-weight: 100;
+.card-header {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.card .card-header h1 {
+  background-color: #e8bc0e;
+  color: #000000d7;
   margin: 0;
-  padding: 0 20px;
-  height: 80px;
+  justify-content: center;
+  height: 70px;
   display: flex;
   align-items: center;
   margin-bottom: 4%;
+  font-size: 20px;
 }
+
+.card .card-header a {
+  background-color: #1c1f25;
+  color: #000000d7;
+  margin: 0;
+  justify-content: center;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4%;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+}
+
 .card .checkout {
   position: sticky; /* Change position to sticky */
   bottom: 0;
