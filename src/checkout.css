@@ -54,8 +54,7 @@ input {
 }
 
 /* custom scrollbar */
-/* width */
-::-webkit-scrollbar {
+width ::-webkit-scrollbar {
   width: 3px;
 }
 /* Track */
@@ -124,8 +123,7 @@ img {
 .mt-5 {
   margin-top: 5%;
 }
-.info-prod {
-}
+
 .listCard {
   height: 307px;
   overflow: auto;
@@ -166,9 +164,7 @@ img {
   font-size: 14px;
   font-weight: bold;
 }
-.bottom {
-  /* margin-top: 9%; */
-}
+
 .flex .info-prod .quantity button {
   background-color: #000000;
   border: none;
@@ -263,8 +259,9 @@ img {
   flex-grow: 1;
 }
 .payment_box .card_form .footer {
-  position: absolute;
+  /* position: absolute;
   left: 24px;
   right: 24px;
   bottom: 24px;
+} */
 }
