@@ -151,8 +151,7 @@ header .shopping span {
   background-color: #453e3b;
   height: 100vh;
   transition: 0.7s;
-  overflow: auto;
-  padding-top: 100px;
+  padding-top: 4%;
   display: flex;
   flex-direction: column;
 }
@@ -272,7 +271,10 @@ header .shopping span {
   color: var(--first-color);
   margin-top: 10px;
 }
-
+.listCard {
+  height: 80vh;
+  overflow: auto;
+}
 .list .item button {
   background-color: #1c1f25;
   color: #fff;
@@ -301,6 +303,7 @@ header .shopping span {
   width: auto;
   background-color: #fff5;
   border: none;
+  width: 20px;
 }
 .listCard .count {
   margin: 0 10px;
@@ -330,23 +333,42 @@ header .shopping span {
   color: #fff;
 }
 /* end of the page */
-#containerFooter {
-  width: 100%;
+/* Add this CSS code at the end of your existing CSS */
+
+html,
+body {
+  height: 100%;
+}
+
+.container-checkout {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
   background-color: rgb(29, 29, 29);
   color: white;
   letter-spacing: 1px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
   text-transform: uppercase;
   font-size: 15px;
   padding: 15px 300px;
   box-sizing: border-box;
+  margin-top: auto; /* Push the footer to the bottom */
 }
-#containerFooter h3:hover,
-#containerFooter p:hover {
+
+footer h3:hover,
+footer p:hover {
   color: lightslategray;
   cursor: pointer;
 }
+
+/* Remove duplicate footer CSS code */
+#containerFooter {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
 #webFooter {
   padding-top: 30px;
   font-size: 12px;
