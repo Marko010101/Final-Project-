@@ -75,10 +75,18 @@ export const createProducts = (products) => {
            }/5</span><span class="star">★</span></span>
         </div>
 
-        <button class="addToCardBtn">Add to Card</button>
+        <button class="addToCardBtn">Add to Cart</button>
       `;
       list.appendChild(newDiv);
       Loading(false);
+
+      const image = newDiv.querySelector("img");
+      image.addEventListener("click", () => {
+        const title = encodeURIComponent(product.title);
+        const id = encodeURIComponent(product.id);
+        window.location.href = `description.html?title=${title}&id=${id}`;
+      });
+
       const addToCardBtn = newDiv.querySelector(".addToCardBtn");
       addToCardBtn.addEventListener("click", () => {
         addToCard(key);

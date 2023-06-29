@@ -234,13 +234,18 @@ header .shopping span {
 }
 
 .list .item img {
-  width: 90%;
+  width: 85%;
   height: 300px;
   display: block;
   margin: 0 auto;
   padding: 10%;
+  transition: 0.5s;
 }
-
+.list .item img:hover {
+  width: 95%;
+  height: 310px;
+  transition: 0.5s;
+}
 .list .item .title {
   font-weight: 600;
   height: 40px;
@@ -265,7 +270,7 @@ header .shopping span {
   font-size: 16px;
 }
 
-.list .item .rating .star {
+.star {
   font-size: 22px;
   margin-left: 3px;
   color: var(--first-color);
@@ -372,6 +377,100 @@ footer p:hover {
 #webFooter {
   padding-top: 30px;
   font-size: 12px;
+}
+
+/* description page css */
+
+.containerHeader-desc {
+  display: flex;
+  justify-content: end;
+  margin: auto;
+  transition: 0.5s;
+}
+.description-h1 {
+  position: relative;
+}
+.description-img {
+  width: 80%;
+  height: auto;
+  padding: 10%;
+  background-color: #e0dfdfcb;
+  border-radius: 30px;
+  box-shadow: 1px 1px 10px 1px rgb(123, 123, 123);
+}
+.description-h1 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  font-weight: 700;
+  background-image: linear-gradient(to right, #3a3939, #757575);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.price-rating {
+  display: flex;
+  gap: 30%;
+}
+.rate-desc {
+  font-size: 30px;
+  position: absolute;
+  margin-left: 27%;
+  margin-top: 0.5%;
+}
+.star-desc {
+  position: absolute;
+  margin-left: 35%;
+  font-size: 35px;
+  margin-top: -0.01%;
+}
+.description {
+  font-weight: 600;
+  font-size: 20px;
+}
+.desc-price {
+  font-weight: 700;
+  font-size: 30px;
+}
+.button-desc {
+  font-size: 20px;
+  width: 30%;
+  height: auto;
+  border: 1px solid black;
+  border-radius: 12px;
+  transition: 0.8s;
+}
+
+.button-desc:hover {
+  background-color: #1c1f25;
+  color: white;
+  transition: 0.8s;
+  font-size: 24px;
+}
+.item-random {
+  height: 450px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.66);
+
+  border-radius: 37px;
+  box-shadow: 1px 8px 32px hsla(0, 0%, 10%, 0.1);
+  margin-top: 20px;
+  position: relative;
+  padding: 1.25rem 0;
+  border: 1px solid var(--border-color);
+  transition: 0.3s;
+}
+.desc-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.desc-imgCard {
+  width: 90%;
+  padding: 5%;
+  border-radius: 30px;
+  border: 2px solid black;
+  box-shadow: 1px 1px 10px 1px rgb(123, 123, 123);
 }
 
 /* #containerSlider {

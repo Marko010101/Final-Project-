@@ -13,7 +13,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/style.css" />
-    <title>STYLE MAVEN</title>
+    <title>Product Description</title>
   </head>
   <body>
     <div id="container-header">
@@ -46,45 +46,29 @@
       <img class="mySlides" src="src/img/img1.png" />
       <img class="mySlides" src="src/img/img4.png" />
     </div>
-    <div class="container">
-      <div class="containerHeader">
+    <div class="position-relative container">
+      <div class="containerHeader-desc">
         <header>
-          <h1 class="title-header">Chosen Product For You</h1>
           <div class="shopping">
             <img src="src/img/shopping-bag (2).png" alt="" />
             <span class="quantity">0</span>
           </div>
         </header>
-
-        <div class="list"></div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <h1>Your Card</h1>
-          <a href="checkout.html">checkout</a>
-        </div>
-        <ul class="listCard"></ul>
-        <div class="checkout">
-          <div class="total">0$</div>
-          <div class="closeShopping">close</div>
-        </div>
-      </div>
-
-      <a href="all product.html" class="text-decoration-none">
-        <div class="d-flex align-items-center justify-content-center mb-5">
-          <button class="showMore">View More Product</button>
-        </div>
-      </a>
-      <div class="container text-center mb-5">
-        <div
-          class="spinner-border"
-          role="status"
-          id="loader"
-          style="width: 150px; height: 150px"
-        ></div>
       </div>
     </div>
-    <footer>
+    <div class="card">
+      <div class="card-header">
+        <h1>Your Card</h1>
+        <a href="checkout.html">checkout</a>
+      </div>
+      <ul class="listCard"></ul>
+      <div class="checkout">
+        <div class="total">0$</div>
+        <div class="closeShopping">close</div>
+      </div>
+    </div>
+    <div class="container"></div>
+    <footer class="mt-5">
       <section>
         <div id="containerFooter">
           <div id="webFooter">
@@ -118,7 +102,6 @@
         </div>
       </section>
     </footer>
-
-    <script src="src/script.js" type="module"></script>
+    <script src="src/description.js" type="module"></script>
   </body>
 </html>

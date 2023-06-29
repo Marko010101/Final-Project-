@@ -258,10 +258,3 @@ img {
 .payment_box .card_form {
   flex-grow: 1;
 }
-.payment_box .card_form .footer {
-  /* position: absolute;
-  left: 24px;
-  right: 24px;
-  bottom: 24px;
-} */
-}
