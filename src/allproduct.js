@@ -78,6 +78,44 @@ const Loading = (state) => {
   console.log(state);
 };
 
+get(ref(database, "products/"))
+  .then((snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      console.log(data);
+      Object.keys(data).map((key) => {
+        const product = data[key];
+        const productEl = document.createElement("div");
+        productEl.classList.add("item");
+        productEl.innerHTML = `
+            <img src="${product.image}" alt="${product.title}" />
+            <div class="title">${product.title}</div>
+            <div class="price">
+              <span class="price-value">${product.price}$</span>
+              <span class="rating">
+                <span class="rate">${product.rating}/5</span>
+                <span class="star">★</span>
+              </span>
+            </div>
+            <button class="addToCardBtn">Add to Cart</button>
+          `;
+        list.appendChild(productEl);
+        const image = productEl.querySelector("img");
+        image.addEventListener("click", () => {
+          const title = encodeURIComponent(product.title);
+          const id = encodeURIComponent(product.id);
+          window.location.href = `description.html?title=${title}&id=${id}`;
+        });
+      });
+    } else {
+      console.log("No data available");
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+    alert(error);
+  });
+
 const API_URL = "https://fakestoreapi.com/products";
 
 export const getData = async () => {

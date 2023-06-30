@@ -1,0 +1,49 @@
+{
+  "products": [
+    {
+      "id": 21,
+      "title": "Men's T-Shirt",
+      "image": "https://d3d71ba2asa5oz.cloudfront.net/12027881/images/blackk_1.jpg",
+      "category": "Clothing",
+      "price": 19.99,
+      "description": "A comfortable and stylish men's t-shirt.",
+      "rating": 4.5
+    },
+    {
+      "id": 22,
+      "title": "Silver Necklace",
+      "image": "https://m.media-amazon.com/images/I/81gSGpo3beL._AC_UY1100_.jpg",
+      "category": "Jewelry",
+      "price": 49.99,
+      "description": "A beautiful silver necklace with a pendant.",
+      "rating": 4.2
+    },
+    {
+      "id": 23,
+      "title": "Women's Jeans",
+      "image": "https://img.mytheresa.com/1094/1236/66/jpeg/catalog/product/18/P00765533.jpg",
+      "category": "Clothing",
+      "price": 39.99,
+      "description": "High-quality women's jeans for a stylish look.",
+      "rating": 4.7
+    },
+    {
+      "id": 24,
+      "title": "Diamond Earrings",
+      "image": "https://i.ebayimg.com/images/g/NtMAAOSwETJbs7Wn/s-l500.jpg",
+      "category": "Jewelry",
+      "price": 199.99,
+      "description": "Exquisite diamond earrings for special occasions.",
+      "rating": 4.9
+    },
+    {
+      "id": 25,
+      "title": "Men's Polo Shirt",
+      "image": "https://cdn-images.farfetch-contents.com/15/27/13/93/15271393_35861352_1000.jpg",
+      "category": "Clothing",
+      "price": 29.99,
+      "description": "A classic polo shirt for men.",
+      "rating": 4.3
+    }
+  ]
+}

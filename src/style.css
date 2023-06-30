@@ -259,10 +259,10 @@ header .shopping span {
   margin: 10px;
   display: flex;
   align-items: center;
-  gap: 60%;
+  gap: 55%;
 }
 .price .price-value {
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
 }
 .list .item .rating .rate {
@@ -472,6 +472,7 @@ footer p:hover {
   border: 2px solid black;
   box-shadow: 1px 1px 10px 1px rgb(123, 123, 123);
 }
+/* firebase products */
 
 /* #containerSlider {
   margin: auto;

@@ -1,3 +1,39 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+import {
+  getDatabase,
+  set,
+  ref,
+  get,
+} from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js";
+import {
+  getStorage,
+  uploadBytes,
+  getDownloadURL,
+} from "https://www.gstatic.com/firebasejs/9.18.0/firebase-storage.js";
+import { ref as sRef } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-storage.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB2OKGhqRYKTeNRGv6kyf3mU2ofmc0sFE4",
+  authDomain: "style-maven.firebaseapp.com",
+  databaseURL: "https://style-maven-default-rtdb.firebaseio.com",
+  projectId: "style-maven",
+  storageBucket: "style-maven.appspot.com",
+  messagingSenderId: "389697690690",
+  appId: "1:389697690690:web:64a7052084dfe9f3efa1db",
+  measurementId: "G-VZFSLN8VCW",
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const auth = getAuth(app);
+const storage = getStorage(app);
+const productSubmit = document.getElementById("createProd");
+
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".container");
   const closeShopping = document.querySelector(".closeShopping");

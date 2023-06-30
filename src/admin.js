@@ -53,10 +53,10 @@ const storage = getStorage(app);
 const productSubmit = document.getElementById("createProd");
 
 productSubmit.addEventListener("click", (e) => {
-  const company = document.getElementById("company").value;
-  const model = document.getElementById("model").value;
-  const year = document.getElementById("year").value;
-  const color = document.getElementById("color").value;
+  const title = document.getElementById("title").value;
+  const description = document.getElementById("description").value;
+  const rating = document.getElementById("rating").value;
+  const category = document.getElementById("category").value;
   const price = document.getElementById("price").value;
   const fileInput = document.getElementById("fileInput");
   const file = fileInput.files[0];
@@ -69,12 +69,12 @@ productSubmit.addEventListener("click", (e) => {
   if (file === undefined) {
     const uid = Math.floor(Math.random() * 100000000000000000);
 
-    set(ref(database, "/products/clothes/" + uid), {
-      company: company,
-      model: model,
-      year: year,
-      color: color,
-      img: null,
+    set(ref(database, "products/" + uid), {
+      title: title,
+      description: description,
+      rating: rating,
+      category: category,
+      image: null,
       id: uid,
       price: price,
     })
@@ -101,12 +101,12 @@ productSubmit.addEventListener("click", (e) => {
             document.getElementById("image").innerHTML = `
             <img class="product_image mt-3" src="${url}" alt="" />
           `;
-            set(ref(database, "/products/clothes/" + uid), {
-              company: company,
-              model: model,
-              year: year,
-              color: color,
-              img: url ? url : "",
+            set(ref(database, "products/" + uid), {
+              title: title,
+              description: description,
+              rating: rating,
+              category: category,
+              image: url ? url : "",
               id: uid,
               price: price,
             });
