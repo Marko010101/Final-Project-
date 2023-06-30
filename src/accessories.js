@@ -5,7 +5,7 @@ const listCard = document.querySelector(".listCard");
 const body = document.querySelector("body");
 const total = document.querySelector(".total");
 const quantity = document.querySelector(".quantity");
-
+const signOut = document.querySelector(".signout");
 var myIndex = 0;
 carousel();
 
@@ -168,3 +168,9 @@ window.changeQuantity = function (key, newQuantity) {
 };
 
 getData();
+
+signOut.addEventListener("click", () => {
+  localStorage.removeItem("accessToken");
+  window.location.href = "register.html";
+  alert("Logout successful. Thank you for using our services!");
+});

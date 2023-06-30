@@ -53,7 +53,7 @@ const auth = getAuth(app);
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const form = document.getElementById("form");
-
+const signOut = document.querySelector(".signout");
 // registation
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -66,12 +66,15 @@ form.addEventListener("submit", (e) => {
       console.log(user);
       alert("You have registered successfully!");
     })
+
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
     });
 });
-
+if (localStorage.getItem("accessToken")) {
+  window.location.href = "index.html";
+}
 const signEmail = document.getElementById("signemail");
 const signPassword = document.getElementById("signpassword");
 const signIn = document.getElementById("signIn");
@@ -101,3 +104,9 @@ signIn.addEventListener("submit", (e) => {
 if (localStorage.getItem("accessToken")) {
   window.location.href = "admin.html";
 }
+
+signOut.addEventListener("click", () => {
+  localStorage.removeItem("accessToken");
+  window.location.href = "register.html";
+  alert("Logout successful. Thank you for using our services!");
+});

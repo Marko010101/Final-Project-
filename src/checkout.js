@@ -1,6 +1,6 @@
 const listCard = document.querySelector(".listCard");
 const total = document.querySelector(".total");
-
+const signOut = document.querySelector(".signout");
 let listCards = {};
 let totalPrice = 0;
 
@@ -79,3 +79,9 @@ function reloadCard() {
 loadDataFromLocalStorage();
 createListCard();
 calculateTotalPrice();
+
+signOut.addEventListener("click", () => {
+  localStorage.removeItem("accessToken");
+  window.location.href = "register.html";
+  alert("Logout successful. Thank you for using our services!");
+});

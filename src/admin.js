@@ -1,3 +1,4 @@
+const signOut = document.querySelector(".signout");
 var myIndex = 0;
 
 carousel();
@@ -128,3 +129,9 @@ if (localStorage.getItem("accessToken")) {
     "To access the full functionality of our website, please register and create an account. We're excited to have you on board!"
   );
 }
+
+signOut.addEventListener("click", () => {
+  localStorage.removeItem("accessToken");
+  window.location.href = "register.html";
+  alert("Logout successful. Thank you for using our services!");
+});
