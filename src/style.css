@@ -472,28 +472,83 @@ footer p:hover {
   border: 2px solid black;
   box-shadow: 1px 1px 10px 1px rgb(123, 123, 123);
 }
-/* firebase products */
-
-/* #containerSlider {
-  margin: auto;
-  width: 90%;
-  text-align: center;
-  padding-top: 100px;
-  box-sizing: border-box;
-}
-#containerSlider img {
+footer {
   width: 100%;
-  height: 140%;
-  text-align: center;
-  align-content: center;
+  background-color: black;
 }
-@media (max-width: 732px) {
-  #containerSlider img {
-    height: 12em;
+
+@media screen and (max-width: 1440px) {
+}
+@media screen and (max-width: 1366px) {
+}
+
+@media screen and (max-width: 1268px) {
+  #shopName {
+    font-size: 22px;
+    font-family: "Lato", sans-serif;
+  }
+  #collection {
+    font-size: 80%;
+  }
+  #input {
+    width: 20em;
   }
 }
-@media (max-width: 500px) {
-  #containerSlider img {
-    height: 10em;
+
+@media screen and (max-width: 980px) {
+  #container-header {
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 0.5fr;
+    padding: 10px 30px;
   }
-} */
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-top: 30px;
+    justify-content: center;
+  }
+  .list .item {
+    width: 40%;
+  }
+  header .shopping {
+    right: 0%;
+    position: absolute;
+    text-align: right;
+  }
+  header .shopping img {
+    width: 40px;
+    cursor: pointer;
+  }
+
+  .w3-content {
+    visibility: hidden;
+  }
+  .media-btn {
+    width: 1000px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .list .item {
+    width: 55%;
+  }
+
+  .w3-content {
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  header .shopping {
+    margin-left: -80%;
+    position: relative;
+  }
+}
