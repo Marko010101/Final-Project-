@@ -259,7 +259,7 @@ header .shopping span {
   margin: 10px;
   display: flex;
   align-items: center;
-  gap: 55%;
+  gap: 53%;
 }
 .price .price-value {
   font-size: 20px;
