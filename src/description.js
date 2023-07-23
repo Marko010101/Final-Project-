@@ -4,6 +4,7 @@ import {
   set,
   ref,
   get,
+  onValue,
 } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
 import {
   getAuth,
@@ -27,7 +28,6 @@ const firebaseConfig = {
   appId: "1:389697690690:web:64a7052084dfe9f3efa1db",
   measurementId: "G-VZFSLN8VCW",
 };
-
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
@@ -43,6 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const listCard = document.querySelector(".listCard");
   const total = document.querySelector(".total");
   const signOut = document.querySelector(".signout");
+  signOut.addEventListener("click", () => {
+    localStorage.removeItem("accessToken");
+    window.location.href = "register.html";
+    alert("Logout successful. Thank you for using our services!");
+  });
 
   var myIndex = 0;
 
@@ -83,7 +88,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const url = `${API_URL}/${id}`;
       const res = await fetch(url);
       const data = await res.json();
-      createProducts(data);
+      if (data.firebaseProduct) {
+        createFirebaseProduct(data);
+      } else {
+        createProducts(data);
+      }
     } catch (error) {
       console.error("Error fetching product data:", error);
     }
@@ -97,26 +106,63 @@ document.addEventListener("DOMContentLoaded", () => {
         product.category
       }</h1>
       <div class="d-flex gap-5 mt-4">
-     <div class="col-6 d-flex justify-content-center">
-       <img class="description-img" src="${product.image}" alt="${
+        <div class="col-6 d-flex justify-content-center">
+          <img class="description-img" src="${product.image}" alt="${
       product.title
     }" <span>
-           <span class="rate-desc">${product.rating?.rate}/5</span>
-           <span class="star star-desc">★</span>
-         </span>
-     </div>
-     <div class="col-6">
-       <h1 class="description-h1">${product.title}</h1>
-       <div class="description mt-4">${product.description}</div>
-       <div class="desc-price mt-4">
-         <span class="price-value">${product.price.toLocaleString()}$</span>
-       </div>
-       <div class="d-flex justify-content-center">
-         <button class="addToCartBtn button-desc mt-4">Add to Cart</button>
-       </div>
-     </div>
-   </div>
-      `;
+            <span class="rate-desc">${product.rating?.rate}/5</span>
+            <span class="star star-desc">★</span>
+          </span>
+        </div>
+        <div class="col-6">
+          <h1 class="description-h1">${product.title}</h1>
+          <div class="description mt-4">${product.description}</div>
+          <div class="desc-price mt-4">
+            <span class="price-value">${product.price.toLocaleString()}$</span>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button class="addToCartBtn button-desc mt-4">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(newDiv);
+
+    const addToCartBtn = newDiv.querySelector(".addToCartBtn");
+    addToCartBtn.addEventListener("click", () => {
+      addToCart(product);
+    });
+  };
+
+  const createFirebaseProduct = (product) => {
+    const newDiv = document.createElement("div");
+    newDiv.classList.add("clickedProduct");
+    newDiv.innerHTML = `
+      <h1 class="d-flex justify-content-center mb-5 title-header">${
+        product.category
+      }</h1>
+      <div class="d-flex gap-5 mt-4">
+        <div class="col-6 d-flex justify-content-center">
+          <img class="description-img" src="${product.image}" alt="${
+      product.title
+    }" <span>
+            <span class="rate-desc">${product.rating?.rate}/5</span>
+            <span class="star star-desc">★</span>
+          </span>
+        </div>
+        <div class="col-6">
+          <h1 class="description-h1">${product.title}</h1>
+          <div class="description mt-4">${product.description}</div>
+          <div class="desc-price mt-4">
+            <span class="price-value">${product.price.toLocaleString()}$</span>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button class="addToCartBtn button-desc mt-4">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    `;
 
     container.appendChild(newDiv);
 
@@ -149,20 +195,20 @@ function createListCard() {
       let newDiv = document.createElement("div");
       newDiv.classList.add("mt-5");
       newDiv.innerHTML = `
-    <div class="desc-card">
-         <div><img class="desc-imgCard" src="${product.image}"/></div>
-        <div class="text-white p-2">${product.title}</div>
-        <div class="text-white">${product.price.toLocaleString()}$</div>
-        <div>
-          <button onclick="changeQuantity(${key}, ${
+        <div class="desc-card">
+          <div><img class="desc-imgCard" src="${product.image}"/></div>
+          <div class="text-white p-2">${product.title}</div>
+          <div class="text-white">${product.price.toLocaleString()}$</div>
+          <div>
+            <button onclick="changeQuantity(${key}, ${
         product.quantity - 1
       })">-</button>
-          <div class="count text-white">${product.quantity}</div>
-          <button onclick="changeQuantity(${key}, ${
+            <div class="count text-white">${product.quantity}</div>
+            <button onclick="changeQuantity(${key}, ${
         product.quantity + 1
       })">+</button>
+          </div>
         </div>
-    </div>
       `;
       listCard.appendChild(newDiv);
     }
@@ -239,8 +285,18 @@ loadDataFromLocalStorage();
 createListCard();
 calculateTotalPrice();
 
-signOut.addEventListener("click", () => {
-  localStorage.removeItem("accessToken");
-  window.location.href = "register.html";
-  alert("Logout successful. Thank you for using our services!");
-});
+const getFirebaseProduct = async (id) => {
+  try {
+    const snapshot = await get(ref(database, `products/${id}`));
+    if (snapshot.exists()) {
+      const product = snapshot.val();
+      createFirebaseProduct(product);
+    } else {
+      console.error("Product does not exist in the database.");
+    }
+  } catch (error) {
+    console.error("Error fetching product data:", error);
+  }
+};
+
+getFirebaseProduct(id);

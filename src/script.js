@@ -209,3 +209,27 @@ signOut.addEventListener("click", () => {
   window.location.href = "register.html";
   alert("Logout successful. Thank you for using our services!");
 });
+
+(() => {
+  console.log("0");
+
+  setTimeout(() => {
+    console.log("1");
+  });
+
+  console.log("2");
+
+  setTimeout(() => {
+    console.log("3");
+  }, 0);
+
+  console.log("4");
+})();
+
+const array = [1, 2, 3, 45, 6, 7, 6, 5, 4, 78, 9, 0, 8];
+array.forEach((element) => {
+  if (element % 2 != 1) {
+    console.log(element);
+  }
+  Math.max(...array);
+});
