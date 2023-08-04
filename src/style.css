@@ -17,7 +17,7 @@ body {
   width: 100%;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr 1fr;
   font-family: "Lato", sans-serif;
   z-index: 1;
   justify-content: space-between;
@@ -28,17 +28,27 @@ body {
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
     0 2px 6px 2px rgba(60, 64, 67, 0.149);
 }
+body.dark #container-header {
+  background-color: #3d3d3d;
+  color: white;
+}
 #shopName {
   font-size: 25px;
   font-family: "Lato", sans-serif;
+}
+#shopName:active {
+  animation: clickMove 0.3s;
 }
 #shopName a {
   text-decoration: none;
   color: rgb(29, 29, 29);
 }
-#shopName > b {
+#shopName b {
   font-weight: 900;
   font: black;
+}
+body.dark #shopName a {
+  color: white;
 }
 .MAVEN {
   color: red;
@@ -116,6 +126,17 @@ header {
   grid-template-columns: 1fr 50px;
   margin-top: 50px;
 }
+.darkMode {
+  margin-right: 100px;
+}
+.dark-icon {
+  height: 50px;
+  cursor: pointer;
+}
+.dark {
+  background-color: #1c1f25;
+}
+
 header .shopping {
   position: relative;
   text-align: right;
@@ -480,6 +501,15 @@ footer p:hover {
 footer {
   width: 100%;
   background-color: black;
+}
+
+@keyframes clickMove {
+  0% {
+    transform: translateY(3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 @media screen and (max-width: 1440px) {

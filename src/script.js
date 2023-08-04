@@ -41,6 +41,13 @@ const total = document.querySelector(".total");
 const quantity = document.querySelector(".quantity");
 const showMore = document.querySelector(".showMore");
 const signOut = document.querySelector(".signout");
+const darkMode = document.querySelector(".dark-icon");
+const header = document.getElementById("container-header");
+
+darkMode.addEventListener("click", () => {
+  body.classList.toggle("dark");
+});
+
 var myIndex = 0;
 
 carousel();
