@@ -1,10 +1,11 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 body {
   background-color: #d2d5d6;
-  font-family: 'open sans', sans-serif;
+  font-family: "open sans", sans-serif;
 }
 :root {
   --first-color: hsl(31, 100%, 70%);
@@ -86,7 +87,7 @@ body.dark #shopName a {
   transition: all 0.2s;
   margin-left: 2rem;
 }
-#input:focus{
+#input:focus {
   background-color: rgb(227, 226, 226);
 }
 
@@ -95,7 +96,7 @@ body.dark #shopName a {
   align-items: center;
   justify-content: space-around;
 }
-.dark-link{
+.dark-link {
   color: rgb(221, 221, 221) !important;
 }
 
@@ -151,7 +152,6 @@ header {
   grid-template-columns: 1fr 50px;
   margin-top: 50px;
 }
-
 
 header .shopping {
   position: relative;

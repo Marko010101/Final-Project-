@@ -46,16 +46,26 @@ const header = document.getElementById("container-header");
 const collectionElement = document.getElementById("collection");
 const cartButtons = document.querySelectorAll(".addToCardBtn");
 
+let isDarkMode = false; // Initial state is not in dark mode
+
 darkMode.addEventListener("click", () => {
-  body.classList.toggle("dark");
+  isDarkMode = !isDarkMode; // Toggle the dark mode state
+  body.classList.toggle("dark", isDarkMode); // Apply or remove the "dark" class to body
   const collectionLinks = collectionElement.querySelectorAll("a");
 
   collectionLinks.forEach((link) => {
-    link.classList.toggle("dark-link");
+    link.classList.toggle("dark-link", isDarkMode); // Toggle the "dark-link" class on links
+  });
+
+  document.querySelector(".title-header").style.backgroundImage = isDarkMode
+    ? "linear-gradient(to bottom, #F0FFFF, #DC143C)" // Apply gradient in dark mode
+    : "none"; // Remove gradient when not in dark mode
+
+  const addToCardButtons = document.querySelectorAll(".addToCardBtn");
+  addToCardButtons.forEach((button) => {
+    button.style.backgroundColor = isDarkMode ? "#4B0082" : "black"; // Toggle button color
   });
 });
-
-
 
 var myIndex = 0;
 
@@ -249,4 +259,3 @@ array.forEach((element) => {
   }
   Math.max(...array);
 });
-
