@@ -43,10 +43,19 @@ const showMore = document.querySelector(".showMore");
 const signOut = document.querySelector(".signout");
 const darkMode = document.querySelector(".dark-icon");
 const header = document.getElementById("container-header");
+const collectionElement = document.getElementById("collection");
+const cartButtons = document.querySelectorAll(".addToCardBtn");
 
 darkMode.addEventListener("click", () => {
   body.classList.toggle("dark");
+  const collectionLinks = collectionElement.querySelectorAll("a");
+
+  collectionLinks.forEach((link) => {
+    link.classList.toggle("dark-link");
+  });
 });
+
+
 
 var myIndex = 0;
 
@@ -240,3 +249,4 @@ array.forEach((element) => {
   }
   Math.max(...array);
 });
+
