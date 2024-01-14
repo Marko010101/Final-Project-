@@ -1,20 +1,6 @@
-var myIndex = 0;
+import { carousel } from "./carousel.js";
 
 carousel();
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) {
-    myIndex = 1;
-  }
-  x[myIndex - 1].style.display = "block";
-  setTimeout(carousel, 2000); // Change image every 2 seconds
-}
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
 import {
@@ -57,13 +43,11 @@ const signOut = document.querySelector(".signout");
 // registation
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log(email.value, password.value);
   createUserWithEmailAndPassword(auth, email.value, password.value)
     .then((userCredential) => {
       // Registration
       const user = userCredential.user;
       localStorage.setItem("accessToken", user.accessToken);
-      console.log(user);
       alert("You have registered successfully!");
     })
 
@@ -85,7 +69,6 @@ signIn.addEventListener("submit", (e) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user.accessToken);
       localStorage.setItem("accessToken", user.accessToken);
 
       if (user) {

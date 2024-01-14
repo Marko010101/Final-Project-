@@ -1,3 +1,5 @@
+import { carousel } from "./carousel.js";
+
 const openShopping = document.querySelector(".shopping");
 const closeShopping = document.querySelector(".closeShopping");
 const list = document.querySelector(".list");
@@ -12,22 +14,7 @@ const header = document.getElementById("container-header");
 const collectionElement = document.getElementById("collection");
 const cartButtons = document.querySelectorAll(".addToCardBtn");
 
-var myIndex = 0;
 carousel();
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) {
-    myIndex = 1;
-  }
-  x[myIndex - 1].style.display = "block";
-  setTimeout(carousel, 2000); // Change image every 2 seconds
-}
 
 let isDarkMode = false; // Initial state is not in dark mode
 
@@ -66,7 +53,6 @@ const Loading = (state) => {
     const loader = document.getElementById("loader");
     loader.classList.add("d-none"); // Hide the loader
   }
-  console.log(state);
 };
 
 const API_URL = "https://fakestoreapi.com/products";
@@ -75,7 +61,6 @@ export const getData = async () => {
   Loading(true);
   const res = await fetch(API_URL);
   const data = await res.json();
-  console.log(data);
   createProducts(data);
 };
 

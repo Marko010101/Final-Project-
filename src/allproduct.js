@@ -1,3 +1,5 @@
+import { carousel } from "./carousel.js";
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
 import {
   getDatabase,
@@ -48,22 +50,7 @@ const header = document.getElementById("container-header");
 const collectionElement = document.getElementById("collection");
 const cartButtons = document.querySelectorAll(".addToCardBtn");
 
-var myIndex = 0;
 carousel();
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) {
-    myIndex = 1;
-  }
-  x[myIndex - 1].style.display = "block";
-  setTimeout(carousel, 2000); // Change image every 2 seconds
-}
 
 let isDarkMode = false; // Initial state is not in dark mode
 
@@ -102,14 +89,12 @@ const Loading = (state) => {
     const loader = document.getElementById("loader");
     loader.classList.add("d-none"); // Hide the loader
   }
-  console.log(state);
 };
 
 get(ref(database, "products/"))
   .then((snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
-      console.log(data);
       Object.keys(data).map((key) => {
         const product = data[key];
         const productEl = document.createElement("div");
@@ -135,7 +120,6 @@ get(ref(database, "products/"))
         });
       });
     } else {
-      console.log("No data available");
     }
   })
   .catch((error) => {
@@ -149,7 +133,6 @@ export const getData = async () => {
   Loading(true);
   const res = await fetch(API_URL);
   const data = await res.json();
-  console.log(data);
   createProducts(data);
 };
 

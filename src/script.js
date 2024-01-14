@@ -1,3 +1,5 @@
+import { carousel } from "./carousel.js";
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
 import {
   getDatabase,
@@ -67,23 +69,7 @@ darkMode.addEventListener("click", () => {
   });
 });
 
-var myIndex = 0;
-
 carousel();
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) {
-    myIndex = 1;
-  }
-  x[myIndex - 1].style.display = "block";
-  setTimeout(carousel, 2000); // Change image every 2 seconds
-}
 
 openShopping.addEventListener("click", () => {
   body.classList.add("active");
@@ -103,7 +89,6 @@ const Loading = (state) => {
     loader.classList.add("d-none");
     showMore.style.display = "block";
   }
-  console.log(state);
 };
 
 const API_URL = "https://fakestoreapi.com/products";
@@ -112,7 +97,6 @@ export const getData = async () => {
   Loading(true);
   const response = await fetch(API_URL);
   const data = await response.json();
-  console.log(data);
   createProducts(data);
 };
 
@@ -236,26 +220,9 @@ signOut.addEventListener("click", () => {
   alert("Logout successful. Thank you for using our services!");
 });
 
-(() => {
-  console.log("0");
-
-  setTimeout(() => {
-    console.log("1");
-  });
-
-  console.log("2");
-
-  setTimeout(() => {
-    console.log("3");
-  }, 0);
-
-  console.log("4");
-})();
-
 const array = [1, 2, 3, 45, 6, 7, 6, 5, 4, 78, 9, 0, 8];
 array.forEach((element) => {
   if (element % 2 != 1) {
-    console.log(element);
   }
   Math.max(...array);
 });

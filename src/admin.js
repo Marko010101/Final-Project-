@@ -1,21 +1,6 @@
+import { carousel } from "./carousel.js";
+
 const signOut = document.querySelector(".signout");
-var myIndex = 0;
-
-carousel();
-
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) {
-    myIndex = 1;
-  }
-  x[myIndex - 1].style.display = "block";
-  setTimeout(carousel, 2000); // Change image every 2 seconds
-}
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
 import {
@@ -47,6 +32,8 @@ const firebaseConfig = {
   measurementId: "G-VZFSLN8VCW",
 };
 
+carousel();
+
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
@@ -61,11 +48,9 @@ productSubmit.addEventListener("click", (e) => {
   const price = document.getElementById("price").value;
   const fileInput = document.getElementById("fileInput");
   const file = fileInput.files[0];
-  console.log(file);
 
   let timestamp = new Date().getTime();
   const fileName = timestamp + file?.name;
-  console.log("test", fileName);
 
   if (file === undefined) {
     const uid = Math.floor(Math.random() * 100000000000000000);
@@ -91,17 +76,14 @@ productSubmit.addEventListener("click", (e) => {
     const storageRef = sRef(storage, "images/" + fileName);
 
     uploadBytes(storageRef, file)
-      .then((snapshot) => {
-        console.log(snapshot);
-        console.log("Uploaded a blob or file!");
-      })
+      .then((snapshot) => {})
       .then(() => {
         getDownloadURL(storageRef)
           .then((url) => {
             console.log(url);
             document.getElementById("image").innerHTML = `
-            <img class="product_image mt-3" src="${url}" alt="" />
-          `;
+        <img class="product_image mt-3" src="${url}" alt="" />
+        `;
             set(ref(database, "products/" + uid), {
               title: title,
               description: description,

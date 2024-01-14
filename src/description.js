@@ -1,3 +1,5 @@
+import { carousel } from "./carousel.js";
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
 import {
   getDatabase,
@@ -49,8 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("Logout successful. Thank you for using our services!");
   });
 
-  var myIndex = 0;
-
   openShopping.addEventListener("click", () => {
     body.classList.add("active");
   });
@@ -60,20 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   carousel();
-
-  function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
-    }
-    myIndex++;
-    if (myIndex > x.length) {
-      myIndex = 1;
-    }
-    x[myIndex - 1].style.display = "block";
-    setTimeout(carousel, 2000); // Change image every 2 seconds
-  }
 
   const API_URL = "https://fakestoreapi.com/products";
 

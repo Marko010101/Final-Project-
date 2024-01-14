@@ -1,3 +1,5 @@
+import { carousel } from "./carousel.js";
+
 const openShopping = document.querySelector(".shopping");
 const closeShopping = document.querySelector(".closeShopping");
 const list = document.querySelector(".list");
@@ -11,37 +13,23 @@ const darkMode = document.querySelector(".dark-icon");
 const header = document.getElementById("container-header");
 const collectionElement = document.getElementById("collection");
 const cartButtons = document.querySelectorAll(".addToCardBtn");
-var myIndex = 0;
+
 carousel();
 
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) {
-    myIndex = 1;
-  }
-  x[myIndex - 1].style.display = "block";
-  setTimeout(carousel, 2000); // Change image every 2 seconds
-}
-
-let isDarkMode = false; // Initial state is not in dark mode
+let isDarkMode = false;
 
 darkMode.addEventListener("click", () => {
-  isDarkMode = !isDarkMode; // Toggle the dark mode state
-  body.classList.toggle("dark", isDarkMode); // Apply or remove the "dark" class to body
+  isDarkMode = !isDarkMode;
+  body.classList.toggle("dark", isDarkMode);
   const collectionLinks = collectionElement.querySelectorAll("a");
 
   collectionLinks.forEach((link) => {
-    link.classList.toggle("dark-link", isDarkMode); // Toggle the "dark-link" class on links
+    link.classList.toggle("dark-link", isDarkMode);
   });
 
   document.querySelector(".title-header").style.backgroundImage = isDarkMode
-    ? "linear-gradient(to bottom, #F0FFFF, #DC143C)" // Apply gradient in dark mode
-    : "none"; // Remove gradient when not in dark mode
+    ? "linear-gradient(to bottom, #F0FFFF, #DC143C)"
+    : "none";
 
   const addToCardButtons = document.querySelectorAll(".addToCardBtn");
   addToCardButtons.forEach((button) => {
@@ -65,7 +53,6 @@ const Loading = (state) => {
     const loader = document.getElementById("loader");
     loader.classList.add("d-none"); // Hide the loader
   }
-  console.log(state);
 };
 
 const API_URL = "https://fakestoreapi.com/products";
@@ -74,7 +61,6 @@ export const getData = async () => {
   Loading(true);
   const res = await fetch(API_URL);
   const data = await res.json();
-  console.log(data);
   createProducts(data);
 };
 
